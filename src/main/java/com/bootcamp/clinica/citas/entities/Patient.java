@@ -3,21 +3,17 @@ package com.bootcamp.clinica.citas.entities;
 import javax.persistence.*;
 
 @Entity
-@Table(name ="doctor")
-public class Doctor {
+@Table(name ="paciente")
+public class Patient {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY )
     @Column(unique = true , nullable = false)
     private Long id;
     @Column(name = "nombre")
     private String name;
-    @Column(name = "numerocolegiatura")
-    private String tuitionNumber ;
     private String dni;
     @Column(name = "edad")
     private Integer age;
-    @Column(name = "especialidad")
-    private String specialty;
 
     public Long getId() {
         return id;
@@ -35,14 +31,6 @@ public class Doctor {
         this.name = name;
     }
 
-    public String getTuitionNumber() {
-        return tuitionNumber;
-    }
-
-    public void setTuitionNumber(String tuitionNumber) {
-        this.tuitionNumber = tuitionNumber;
-    }
-
     public String getDni() {
         return dni;
     }
@@ -51,7 +39,7 @@ public class Doctor {
         this.dni = dni;
     }
 
-    public Integer getEdad() {
+    public Integer getAge() {
         return age;
     }
 
@@ -59,23 +47,13 @@ public class Doctor {
         this.age = age;
     }
 
-    public String getSpecialty() {
-        return specialty;
-    }
-
-    public void setSpecialty(String specialty) {
-        this.specialty = specialty;
-    }
-
     @Override
     public String toString() {
-        return "Doctor{" +
+        return "Patient{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", tuitionNumber='" + tuitionNumber + '\'' +
                 ", dni='" + dni + '\'' +
                 ", age=" + age +
-                ", specialty='" + specialty + '\'' +
                 '}';
     }
 }

@@ -2,20 +2,22 @@ package com.bootcamp.clinica.citas.controllers;
 
 import com.bootcamp.clinica.citas.entities.Doctor;
 import com.bootcamp.clinica.citas.services.DoctorService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("doctores")
+@RequestMapping("doctors")
 public class DoctorController {
 
+    @Autowired
     private DoctorService doctorService;
 
-    DoctorController(DoctorService doctorService){
-        this.doctorService= doctorService;
-    }
+//    DoctorController(DoctorService doctorService){
+//        this.doctorService= doctorService;
+//    }
 
     @GetMapping
     public List<Doctor> findAll(){
@@ -42,7 +44,7 @@ public class DoctorController {
 //    }
 
 
-    @GetMapping("/buscar")
+    @GetMapping("/find")
     public List<Doctor> findByName(@RequestParam("nombre") String nombre,
                                    @RequestParam("especialidad") String especialidad){
         System.out.println("nombre = " + nombre);
@@ -60,10 +62,10 @@ public class DoctorController {
 //        return this.doctorService.save(doctor);
 //    }
 
-    @PatchMapping("/especialidad/{id}/{especialidad}")
-    public Doctor update(@PathVariable("id") Long id, @PathVariable("especialidad") String especialidad){
-        System.out.println("especialidad = " + especialidad);
-        return this.doctorService.updateEspecialidad(id, especialidad);
+    @PatchMapping("/specialty/{id}/{specialty}")
+    public Doctor update(@PathVariable("id") Long id, @PathVariable("specialty") String specialty){
+        System.out.println("specialty = " + specialty);
+        return this.doctorService.updateEspecialidad(id, specialty);
     }
 
     @DeleteMapping("/{id}")
